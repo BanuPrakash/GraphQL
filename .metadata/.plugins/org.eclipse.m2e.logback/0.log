@@ -1,1 +1,14 @@
 2023-05-11 09:19:59,753 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-05-11 10:38:33,997 [Worker-58: Import Getting Started Content] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:springdemo:1.0.0-SNAPSHOT @ /Users/banuprakash/Desktop/Java Workspaces/ADOBE/MAY23/GraphQL-May23/GraphQL/springdemo/pom.xml.
+2023-05-11 10:38:34,243 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /springdemo/src/main/java
+2023-05-11 10:38:34,243 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /springdemo/src/main/resources
+2023-05-11 10:38:34,244 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /springdemo/src/main/resources
+2023-05-11 10:38:34,245 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /springdemo/src/test/java
+2023-05-11 10:38:34,327 [Worker-58: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 0 sec
+2023-05-11 10:38:34,328 [Worker-58: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-05-11 10:38:34,405 [Worker-58: Import Getting Started Content] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:springdemo:1.0.0-SNAPSHOT @ /Users/banuprakash/Desktop/Java Workspaces/ADOBE/MAY23/GraphQL-May23/GraphQL/springdemo/pom.xml.
+2023-05-11 10:38:34,467 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /springdemo/src/main/java
+2023-05-11 10:38:34,467 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /springdemo/src/main/resources
+2023-05-11 10:38:34,467 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /springdemo/src/main/resources
+2023-05-11 10:38:34,467 [Worker-58: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /springdemo/src/test/java
+2023-05-11 10:38:34,519 [Worker-58: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 0.00 sec, update config takes 0.00 sec 

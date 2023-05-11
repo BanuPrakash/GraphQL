@@ -50,3 +50,18 @@ Binding(ALT+COMMAND+R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.ui 2 2 2023-05-11 10:16:47.010
+!MESSAGE Invalid preference category path: org.springframework.tooling.boot.xml.ls.preferences (bundle: org.springframework.ide.eclipse.xml.namespaces, page: org.springframework.ide.eclipse.beans.ui.namespaces.preferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2023-05-11 10:16:47.011
+!MESSAGE Invalid preference category path: org.springsource.ide.eclipse.commons.preferencePage (bundle: org.springframework.ide.eclipse.boot, page: org.springframework.ide.eclipse.boot.ui.preferences.BootPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2023-05-11 10:16:47.011
+!MESSAGE Invalid preference category path: org.springsource.ide.eclipse.commons.preferencePage (bundle: org.springframework.ide.eclipse.boot, page: org.springframework.ide.eclipse.boot.ui.preferences.InitializrPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2023-05-11 10:16:47.011
+!MESSAGE Invalid preference category path: org.springframework.tooling.boot.validation (bundle: org.springframework.ide.eclipse.boot.validation, page: org.springframework.ide.eclipse.boot.validation.preferences.ConfigurationProcessingPreferencesPage)
+
+!ENTRY org.eclipse.ui 2 2 2023-05-11 10:16:47.011
+!MESSAGE Invalid preference category path: org.springsource.ide.eclipse.commons.preferencePage (bundle: org.springframework.ide.eclipse.boot.dash, page: org.springframework.ide.eclipse.boot.dash.prefs.BootDashPrefsPage)
