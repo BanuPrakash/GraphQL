@@ -146,7 +146,7 @@ JPA and @Bean
 Factory Method --> @Bean
 
 objects of 3rd party classes
-
+```
 @Configuration
 public class AppConfig {
 	@Bean
@@ -170,7 +170,7 @@ public class ProductRepo {
 	DataSource ds;
 	...
 }
-
+```
 ===========
 
 ORM and JPA Specification
@@ -187,7 +187,7 @@ products table
 id  name  amount    quantity
 1   A     5344.22    100
 
-
+```
 @Entity
 @Table("products)
 public class Product {
@@ -202,7 +202,7 @@ public class Product {
 	@Column(name="quantity")
 	int qty;
 }
-
+```
 ----
 
 ORM
@@ -211,7 +211,7 @@ ORM
 3) EntityManager is a interface to manage entites [ Sync with database]
 4) EntityManagerFactory
 
-
+```
 @Configuration
 public class AppConfig {
 	@Bean
@@ -265,7 +265,7 @@ public class ProductRepo {
 		return em.findAll();
 	}
 }
-
+```
 =====
 
 Spring Data JPA provides abstraction over JPA
