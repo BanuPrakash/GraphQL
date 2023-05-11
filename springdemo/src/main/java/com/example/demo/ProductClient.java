@@ -2,12 +2,14 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 
 @Component
+@Order(1)
 public class ProductClient implements CommandLineRunner {
 	
 	@Autowired

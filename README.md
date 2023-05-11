@@ -286,3 +286,145 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 No need for @Repository class --> Spring Data Jpa generates class with methods in JpaRepository
 
 
+===============================
+
+Spring MVC
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+@Controller
+@RequestMapping("api/products")
+public class ProductController {
+
+	@GetMapping()
+	m1() {
+
+	}
+
+	@PostMapping() {
+
+	}
+}
+
+------------------
+
+GraphQL
+
+GraphQL --> Query Language for your API, not tied to any specific database or storage engine
+GraphQL --> server side runtime for executing queries
+
+json / xml / csv => different representations of state of data 
+
+
+RESTful Web services:
+* plural-nouns for resources
+* HTTP methods for actions [ GET , POST, PUT, PATCH, DELETE ]
+
+1) 
+GET
+http://localhost:8080/api/products
+gets all products
+
+2)
+GET
+http://localhost:8080/api/products?category=mobile
+gets sub-set of products ==> filter by category
+
+3)
+GET
+http://localhost:8080/api/products/3
+gets product by id ==> 3
+
+4) 
+POST
+http://localhost:8080/api/products
+
+Payload contains new product data which has to added to "products" resources
+
+------
+
+GraphQL over REST downsides:
+1) Multiple requests for multiple resources
+2) Waterfall network requests
+	http://adobe.com/clients ==> Client data ==> all clients [ 5 clients]
+	http://adobe.com/clients/<id>/projects ==> http://adobe.com/clients/1/projects [pids]
+	http://adobe.com/clients/<id>/projects/<pid>/team
+3) Over-fetching of data
+4) No under-fetching of data
+5) Schema ==> Contract between client and server ==> Schema first approach
+
+Schemas and Types:
+
+Type System:
+GraphQL query language --> selecting fields and objects
+
+POST http://localhost:8080/graphql
+
+{
+	product {
+		name
+		price
+		supplier {
+			name
+			phone
+		}
+	}
+}
+
+Schema Definition Language - SDL
+
+Define object
+type Product {
+	id:Int
+	name:String
+	price:Float
+}
+
+type Book {
+	title:String
+	amount:Float
+}
+
+Scalar Types:
+Int, Float, String, Boolean, ID
+
+extended-scalar
+
+-----
+Query Type ==> Special Object type that defines all the top level entry points for queries that clients can executes
+
+productmodule.graphqls
+type Query {
+	products:[Product]
+	books:[Book]
+}
+
+Client:
+{
+	products {
+		name
+		price
+	}
+}
+
+ordermodule.graphqls
+
+extend type Query {
+	orders:[Order]
+}
+
+==========
+Operation Type
+schema {
+	Query
+	Mutation
+	Subscription
+}
+
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-graphql</artifactId>
+</dependency>

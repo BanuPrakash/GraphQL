@@ -11,13 +11,13 @@ public class SpringdemoApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SpringdemoApplication.class, args);
-		String[] beans = ctx.getBeanDefinitionNames();
-		for (String bean : beans) {
-			System.out.println(bean);
-		}
-		
-		AppService service = ctx.getBean("appService", AppService.class);
-		service.doTask();
+//		String[] beans = ctx.getBeanDefinitionNames();
+//		for (String bean : beans) {
+//			System.out.println(bean);
+//		}
+//		
+//		AppService service = ctx.getBean("appService", AppService.class);
+//		service.doTask();
 	}
 
 }
