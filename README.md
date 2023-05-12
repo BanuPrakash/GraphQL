@@ -428,3 +428,85 @@ schema {
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql</artifactId>
 </dependency>
+
+===========
+
+Day 2
+
+Day 1: Spring Boot Framework on top of Spring, Annotations, JPA for ORM, H2 as in memory database
+
+src/main/resources
+application.properties ==> DB configuration, server.port=9999, any other configurations,... 
+
+
+@SpringBootApplication ==> class with this annotation contains main() method --> entry point to start Spring Container [ApplicationContext]
+
+----------
+
+GraphQL with Spring Boot 3.0.6 ==> JDK 17+
+
+TypeSystem and Schema Definition Language
+Scalar Types : Int, Float, Boolean, String, ID { serialized string}
+
+type Query {
+	products:[Product]
+}
+
+// Object type
+type Product {
+	id:Int!
+	name:String!
+	price:Float
+}
+
+Root Object type : Opertation Type
+
+schema {
+	query,
+	mutation,
+	subscription
+}
+
+Http as Server Transports
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+Tomcat as web server by default running on port 8080
+
+POST http://localhost:8080/graphql
+
+configure application.properties
+
+spring.graphql.path=/graphql
+
+spring.graphql.graphiql.enabled=true
+
+graphiql is GraphQL client --> just like POSTMAN for RESTful WS
+
+spring.graphql.graphiql.path=/graphiql
+
+spring.graphql.schema.locations=classpath:graphql/**/
+spring.graphql.schema.file-extensions=.graphqls,.gqls
+
+---
+
+http://localhost:8080/graphiql?path=/graphql
+"query" is default operation
+query {
+  products {
+     id
+    name
+  }
+}
+
+---
+
+{
+  productById(id:2) {
+     id
+    name
+  }
+}
+

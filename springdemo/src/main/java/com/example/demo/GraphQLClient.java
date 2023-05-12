@@ -34,13 +34,16 @@ public class GraphQLClient {
 					public graphql.schema.idl.TypeRuntimeWiring.Builder 
 						apply(graphql.schema.idl.TypeRuntimeWiring.Builder t) {
 						return t.dataFetcher("products", new DataFetcher<List<Product>>() {
-
 							@Override
 							public List<Product> get(DataFetchingEnvironment environment) throws Exception {
 								return service.getProducts();
 							}
-							
-						});
+						}).dataFetcher("productById",  new DataFetcher<Product>() {
+							@Override
+							public Product get(DataFetchingEnvironment environment) throws Exception {
+								return service.getProductById(environment.getArgument("id"));
+							}
+					  });
 					}
 				});
 			}
