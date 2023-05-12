@@ -612,4 +612,17 @@ spring.profiles.active=mysql
 application-hsqldb.properties
 application-mysql.properties
 
+```
+{
+ pets {
+  name
+  type {
+    id
+    name
+  }
+}
+}
+
+```
+
 
