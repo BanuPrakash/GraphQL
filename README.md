@@ -511,3 +511,98 @@ query {
   }
 }
 ```
+
+Check:
+1) pom.xml ==> added web dependencies ==> for HTTP Server transport
+2) moved product.graphqls to "graphql" folder
+3) added DataFetcher for productById
+
+Browser:
+http://localhost:8080/graphiql
+
+==========================================
+
+Spring / Spring Boot simplied writing DataFetcher
+
+```
+@Component
+public class ProductQueryResolver implements GraphQlQueryResolver {
+
+	public List<Product> products() {
+		///
+	}
+
+	public Product productById(int id) {
+		//
+	}
+}
+```
+Spring boot 2.7+ [ currently in Spring version 3.0]
+@SchemaMapping
+@QueryMapping
+@MutationMapping
+@SubscriptionMapping
+
+on the lines of RESTful WS:
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@PathMapping
+@DeleteMapping
+
+```
+@Controller
+public class ProductQueryResolver {
+	@QueryMapping
+	public List<Product> products() {
+		///
+	}
+
+}
+```
+
+===========
+
+Eclipse --> Maven --> exisiting maven project --> VeternirayClinic
+
+JPA Bidirectional Relationship
+```
+@Table("customers")
+@Entity
+public class Customer {
+	@Id
+	email;
+	name;
+
+	@OneToMany(mappedBy="customer")
+	List<Order> orders;
+}
+
+customers
+email  				name  
+a@adobe.com			Asha
+b@adobe.com			Beena
+
+
+@Table("orders")
+@Entity
+public class Order {
+	@Id
+	@Column("order_id)
+	orderId;
+
+	total;
+
+	@ManyToOne
+	@JoinColumn("customer_fk")
+	Customer customer;
+}
+
+orders
+order_id 	total  		customer_fk
+120			899344		a@adobe.com
+123			2334		b@adobe.com
+124			9888		a@adobe.com
+
+```
