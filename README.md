@@ -493,6 +493,7 @@ spring.graphql.schema.file-extensions=.graphqls,.gqls
 ---
 
 http://localhost:8080/graphiql?path=/graphql
+```
 "query" is default operation
 query {
   products {
@@ -509,4 +510,4 @@ query {
     name
   }
 }
-
+```
