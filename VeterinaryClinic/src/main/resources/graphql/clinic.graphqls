@@ -1,5 +1,6 @@
 type Query {
 	pets:[Pet]
+	pet(id:Int): Pet
 	petTypes:[PetType]
 }
 
@@ -12,5 +13,16 @@ type Pet {
 	id:Int!
 	name:String
 	type:PetType
+	visits:[Visit]
+	#owner:Owner
+	#birthDate:Date
 }	
 
+type Visit {
+	id:Int!
+	description:String
+	pet:Pet
+	
+	#date:Date!
+	#treatingVet:Vet
+}

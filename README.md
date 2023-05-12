@@ -625,4 +625,12 @@ application-mysql.properties
 
 ```
 
+JP-QL [ Class and fields]
+@Query("from Visit where pet.id = :pid")
+
+same as SQL [ table and columns]
+
+select * from visits where pet.id = 3
+
+
 
