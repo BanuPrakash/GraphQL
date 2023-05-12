@@ -1,0 +1,16 @@
+type Query {
+	pets:[Pet]
+	petTypes:[PetType]
+}
+
+type PetType {
+	id:Int!
+	name:String
+}
+
+type Pet {
+	id:Int!
+	name:String
+	type:PetType
+}	
+

@@ -606,3 +606,10 @@ order_id 	total  		customer_fk
 124			9888		a@adobe.com
 
 ```
+
+spring.profiles.active=mysql
+
+application-hsqldb.properties
+application-mysql.properties
+
+
