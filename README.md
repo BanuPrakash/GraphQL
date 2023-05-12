@@ -632,5 +632,30 @@ same as SQL [ table and columns]
 
 select * from visits where pet.id = 3
 
+=====
+
+PetType and Pet ==> Visit
+
+Tasks: VisitController [visit and owner ] and OwnerController [ pets, visits]
+
+Java Client for GraphiQL -> HttpGraphQlClient
+
+====
+
+By Default in JPA: @ManyToOne is EAGER fetching and @OneToMany is Lazy Fetching
+
+====
+
+Unit Testing: Testing in isolation
+JUnit is default Test Framework, Mockito is default Mocking library
+WebGraphQlTester
+
+MockMvc --> to perform CRUD operations programatically
+
+https://jsonpath.com/
+
+
+
+
 
 

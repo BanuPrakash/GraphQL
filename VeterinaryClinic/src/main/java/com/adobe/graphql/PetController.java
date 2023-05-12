@@ -56,6 +56,7 @@ public class PetController {
 	// Field Resolver
 	@SchemaMapping
 	List<Visit> visits(Pet pet) {
+		// can be MicroService call
 		System.out.println("Pet " + pet.getId());
 		return visitRepository.getVisits(pet.getId());
 	}

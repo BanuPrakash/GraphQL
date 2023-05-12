@@ -2,6 +2,7 @@ type Query {
 	pets:[Pet]
 	pet(id:Int): Pet
 	petTypes:[PetType]
+	#visits:[Visit]
 }
 
 type PetType {
