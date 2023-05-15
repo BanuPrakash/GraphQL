@@ -1,8 +1,12 @@
+scalar Date
+
 directive @uppercase on FIELD_DEFINITION
+
+
 
 type Query {
 	pets:[Pet]
-	pet(id:Int): Pet
+	pet(id:Int): Pet 
 	petTypes:[PetType]
 	#visits:[Visit]
 	#owners:[Owner]
@@ -22,7 +26,7 @@ type Pet {
 	type:PetType
 	visits:[Visit]
 	owner:Owner
-	#birthDate:Date
+	birthDate:Date
 }	
 
 type Visit {

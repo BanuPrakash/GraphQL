@@ -777,3 +777,9 @@ Variables:
 }
 ```
 
+Custom Scalars
+
+https://github.com/graphql-java/graphql-java-extended-scalars
+
+The Coercing interface is used by {@link graphql.schema.GraphQLScalarType}s to parse and serialise object values.
+
