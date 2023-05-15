@@ -14,7 +14,29 @@ type Query {
     
     
     people:[Person]
+    
+    #pagination
+    petPage(first:Int!, after:String) :PetConnection
 }
+
+type PetConnection {
+	edges: [PetEdge],
+	pageInfo: PageInfo!
+}
+
+type PetEdge {
+	node:Pet!
+	cursor:String!
+}
+
+type PageInfo {
+	hasPreviousPage: Boolean!
+	hasNextPage: Boolean!
+	startCursor:String
+	endCursor:String
+}
+
+
 
 type PetType {
 	id:Int!

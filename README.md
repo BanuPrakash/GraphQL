@@ -884,3 +884,74 @@ Query:
   }
 }
 ```
+
+Pagination
+1) Offset based pagination
+ pets(size:10, offset: 2)
+
+ size --> records
+ offset --> from which page
+Controller
+ Pageable pageable = PageRequest.of(page, size) 
+
+ JPA
+ Page<T> findAll(Pageable pageable);
+
+2) Cursor-based pagination
+	pets(first:10, after:cursor);
+	pets(first:10, before:cursor);
+
+	Advantage: REvserse pagination
+	Disadvantage: No Random Access
+
+---
+Connection Type contains "edges" and "pageInfo"
+EdgeType --> cursor, node
+node --> scalar, object
+
+```
+{
+ petPage(first:2) {
+  edges {
+    cursor
+    node {
+      name
+      owner {
+        firstName
+      }
+    }
+  }
+  pageInfo {
+    hasPreviousPage
+    hasNextPage
+    startCursor
+    endCursor
+  }
+}
+  
+}
+
+
+{
+ petPage(first:2, after : "NA==") {
+  edges {
+    cursor
+    node {
+      name
+      owner {
+        firstName
+      }
+    }
+  }
+  pageInfo {
+    hasPreviousPage
+    hasNextPage
+    startCursor
+    endCursor
+  }
+}
+  
+}
+```
+
+ petPage(first:Int!, after:String) :PetConnection on Pet
