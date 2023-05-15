@@ -955,3 +955,31 @@ node --> scalar, object
 ```
 
  petPage(first:Int!, after:String) :PetConnection on Pet
+
+ ===
+
+ Mutation:
+ ```
+ mutation {
+  addVisit(input: {
+    petId: 1
+    vetId: 3
+    description: "Vaccination"
+    date: "2023/03/22"
+  }) {
+    description
+  }
+}
+```
+
+Pending:
+1) DataLoader --> n + 1 problem
+2) Exception --> GraphQLError
+3) Subscription
+4) Filter using specification API
+5) JWT Security 
+
+
+
+
+

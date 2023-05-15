@@ -1,0 +1,11 @@
+
+input VisitInput {
+	petId:Int!
+	vetId:Int!
+	description:String
+	date:Date
+}
+
+type Mutation {
+	addVisit(input:VisitInput!): Visit!
+}

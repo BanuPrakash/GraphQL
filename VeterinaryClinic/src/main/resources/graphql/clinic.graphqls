@@ -57,7 +57,7 @@ type Visit {
 	description:String
 	pet:Pet
 	
-	#date:Date!
+	date:Date!
 	treatingVet:Vet
 }
 
