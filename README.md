@@ -664,7 +664,116 @@ MockMvc --> to perform CRUD operations programatically
 https://jsonpath.com/
 
 
+=====
+
+RuntimeWiring
+DataFetchers
+@Controller
+@QueryMapping ==> root query
+@SchemaMapping ==> filed mapping
+@Argument
+
+type, query root operation
+
+Day 3
+
+Variables --> dynamic values for query, pass them separetly
 
 
+POSTMAN:
+POST http://localhost:8080/graphql
+GraphQL
+```
+Query:
+query PetWithOwner($pid:Int!){
+  pet(id:$pid) {
+    name,
+    type {
+      name
+    }
+    owner {
+      firstName
+      lastName
+    }
+  }
+}
 
+variable:
+{
+  "pid":1
+}
+
+```
+
+Same in graphiql
+
+===========
+
+Fragments: lets you construct set of resusable fields, which can be useed in queries
+
+```
+query PetWithOwner($pid:Int!){
+  pet(id:$pid) {
+    name,
+    type {
+      name
+    }
+    ...OwnerWithPets
+  }
+}
+@ Fragment on Pet type of Object
+fragment OwnerWithPets  on Pet {
+	owner {
+    firstName
+    lastName
+    pets {
+      name
+      type {
+        name
+      }
+    } 
+  }
+}
+
+```
+
+Directives --> decorates part of GraphWL schema with additional configuration
+
+Default directives
+@deprecated(reason: String)	Marks the schema definition of a field or enum value as deprecated with an optional reason.
+
+@skip(if: Boolean!)	If true, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+@include(if: Boolean!)	If false, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+
+Example:
+```
+query PetWithOwner($pid:Int!, $withPets: Boolean!){
+  pet(id:$pid) {
+    name,
+    type {
+      name
+    }
+    ...OwnerWithPets
+  }
+}
+
+fragment OwnerWithPets  on Pet {
+	owner {
+    firstName
+    lastName
+    pets @include(if:$withPets){
+      name
+      type {
+        name
+      }
+    } 
+  }
+}
+
+Variables:
+{
+  "pid":1,
+  "withPets": false
+}
+```
 

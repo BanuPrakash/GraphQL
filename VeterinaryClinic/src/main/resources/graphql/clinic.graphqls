@@ -1,3 +1,5 @@
+directive @uppercase on FIELD_DEFINITION
+
 type Query {
 	pets:[Pet]
 	pet(id:Int): Pet
@@ -11,12 +13,12 @@ type Query {
 
 type PetType {
 	id:Int!
-	name:String
+	name:String 
 }
 
 type Pet {
 	id:Int!
-	name:String
+	name:String @uppercase
 	type:PetType
 	visits:[Visit]
 	owner:Owner
@@ -74,7 +76,7 @@ type Vet implements Person {
     # The Vetenarian's last name
     lastName: String!
 
-    # What is this Vet specialized in?
+    # What is this Vet specialized in? ==> EAGER fetching, no need for @SchemaMapping
     specialties: [Specialty!]!
 
     # All of this Vet's visits

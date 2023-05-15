@@ -32,6 +32,7 @@ public class VetController {
 		return vetRepository.findById(id).get();
 	}
 
+	// field resolver
 	@SchemaMapping
 	public List<Visit> visits(Vet vet) {
 		System.out.println("Called " + vet.getId());

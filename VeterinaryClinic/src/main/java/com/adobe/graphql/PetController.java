@@ -13,6 +13,8 @@ import com.adobe.dao.VisitRepository;
 import com.adobe.entity.Pet;
 import com.adobe.entity.Visit;
 
+import graphql.schema.DataFetchingEnvironment;
+
 @Controller
 public class PetController {
 	@Autowired
@@ -21,7 +23,8 @@ public class PetController {
 	VisitRepository visitRepository;
 	
 	@QueryMapping
-	public List<Pet> pets() {
+	public List<Pet> pets(DataFetchingEnvironment env) {
+		System.out.println(env);
 		return petRepository.findAll();
 	}
 	
