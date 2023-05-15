@@ -13,4 +13,7 @@ public interface VisitRepository extends JpaRepository<Visit, Integer> {
 	@Query("from Visit where pet.id = :pid")
 	//@Query(name="select * from visits where pet.id = :pid", nativeQuery = true)
 	List<Visit> getVisits(@Param("pid") Integer petId);
+	
+	@Query("from Visit where vet.id = :vid ")
+	List<Visit> getVetVisits(@Param("vid") Integer vetId); 
 }

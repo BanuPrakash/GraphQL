@@ -636,9 +636,18 @@ select * from visits where pet.id = 3
 
 PetType and Pet ==> Visit
 
-Tasks: VisitController [visit and owner ] and OwnerController [ pets, visits]
+Tasks: VisitController [visit -> get pet, vet and owner ] and OwnerController [ pets, visits]
 
 Java Client for GraphiQL -> HttpGraphQlClient
+
+type Query {
+	pets:[Pet]
+	pet(id:Int): Pet
+	petTypes:[PetType]
+	#visits:[Visit]
+	#owners:[Owner]
+}
+
 
 ====
 

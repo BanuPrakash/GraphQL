@@ -3,6 +3,10 @@ type Query {
 	pet(id:Int): Pet
 	petTypes:[PetType]
 	#visits:[Visit]
+	#owners:[Owner]
+	
+	vets: [Vet!]!
+    vet(id: Int!): Vet  
 }
 
 type PetType {
@@ -15,7 +19,7 @@ type Pet {
 	name:String
 	type:PetType
 	visits:[Visit]
-	#owner:Owner
+	owner:Owner
 	#birthDate:Date
 }	
 
@@ -25,5 +29,54 @@ type Visit {
 	pet:Pet
 	
 	#date:Date!
-	#treatingVet:Vet
+	treatingVet:Vet
+}
+
+
+# Day 3 additions
+
+# Specialty of a Vet
+type Specialty  {
+    id: Int!
+    name: String!
+}
+
+
+# Interface that describes a Person, i.e. a Vet or an Owner
+interface Person {
+    id: Int!
+    firstName: String!
+    lastName: String!
+}
+
+
+type Owner implements Person {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    address: String!
+    city: String!
+    telephone: String!
+
+    # A list of Pets this Owner owns
+    pets: [Pet!]!
+}
+
+
+
+# A Vetenerian
+type Vet implements Person {
+    id: Int!
+
+    # The Vetenarian's first name
+    firstName: String!
+
+    # The Vetenarian's last name
+    lastName: String!
+
+    # What is this Vet specialized in?
+    specialties: [Specialty!]!
+
+    # All of this Vet's visits
+    visits: [Visit!]!
 }

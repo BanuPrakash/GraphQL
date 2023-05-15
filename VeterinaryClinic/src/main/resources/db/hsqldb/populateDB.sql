@@ -1,6 +1,12 @@
 -- noinspection SqlNoDataSourceInspectionForFile
 
 
+INSERT INTO users (USERNAME, PASSWORD, ENABLED, FULLNAME) VALUES ('banu', '{noop}secret', true, 'Banuprakash C');
+INSERT INTO users (USERNAME, PASSWORD, ENABLED, FULLNAME) VALUES ('rahul', '{noop}secret', true, 'Rahul Prakash');
+
+INSERT INTO roles (ID, USERNAME, ROLE) VALUES (0, 'banu', 'MANAGER');
+INSERT INTO roles (ID, USERNAME, ROLE) VALUES (1, 'rahul', 'USER');
+
 
 INSERT INTO vets VALUES (1, 'James', 'Carter');
 INSERT INTO vets VALUES (2, 'Helen', 'Leary');
