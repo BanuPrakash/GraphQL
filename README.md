@@ -783,3 +783,104 @@ https://github.com/graphql-java/graphql-java-extended-scalars
 
 The Coercing interface is used by {@link graphql.schema.GraphQLScalarType}s to parse and serialise object values.
 
+=======
+
+Unions and interfaces
+
+Union:
+```
+type Book {
+	title:String!
+}
+
+type Author {
+	name:String!
+}
+
+union SearchResult = Book | Author
+
+type Query {
+	search(contains:String) : [SearchResult!]
+}
+```
+----
+```
+interface Book {
+	title:String!
+	author:Author!
+}
+
+type TextBook implments Book {
+	title:String!
+	author:Author!
+	courses: [Course!]!
+}
+
+type OtherBook implements Book {
+	title:String!
+	author:Author!
+	someContent: String
+}
+
+---
+interface Person {
+    id: Int!
+    firstName: String!
+    lastName: String!
+}
+
+
+type Owner implements Person {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    address: String!
+    city: String!
+    telephone: String!
+
+    # A list of Pets this Owner owns
+    pets: [Pet!]!
+}
+
+
+
+# A Vetenerian
+type Vet implements Person {
+    id: Int!
+
+    # The Vetenarian's first name
+    firstName: String!
+
+    # The Vetenarian's last name
+    lastName: String!
+
+    # What is this Vet specialized in? ==> EAGER fetching, no need for @SchemaMapping
+    specialties: [Specialty!]!
+
+    # All of this Vet's visits
+    visits: [Visit!]!
+}
+
+```
+
+Query:
+```
+{
+  people {
+    firstName
+    lastName
+    __typename
+    
+    ...on Vet {
+      specialties {
+        name
+      }
+    }
+    
+    ...on Owner {
+      city
+      telephone
+    }
+  }
+}
+```

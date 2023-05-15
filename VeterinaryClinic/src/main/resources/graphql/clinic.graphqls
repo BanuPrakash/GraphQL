@@ -2,8 +2,6 @@ scalar Date
 
 directive @uppercase on FIELD_DEFINITION
 
-
-
 type Query {
 	pets:[Pet]
 	pet(id:Int): Pet 
@@ -13,6 +11,9 @@ type Query {
 	
 	vets: [Vet!]!
     vet(id: Int!): Vet  
+    
+    
+    people:[Person]
 }
 
 type PetType {
