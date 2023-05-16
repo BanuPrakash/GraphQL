@@ -1145,5 +1145,54 @@ Spring Boot 3.0 introduced @BatchMapping for DataLoader implementation
   }
 }
 ```
+implements GraphQLResolver 
+implements GraphQLQueryResolver 
+=======================================
+Root Operations in GraphQL --> Query, Mutation, Subscription
+
+webflux, websocket
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+</dependency>
 
 
+WebFlux --> Reactive stream --> Flux , Mono, Observable --> Publishers
+
+Admin Client needs to get a notification whenever a new visit to clinic happens
+Client subscribes for a Publisher
+
+type Subscription {
+    onNewVisit: Visit
+}
+
+VisitController
+@SubscriptionMapping
+public Flux<Visit> onNewVisit() {
+		return visitPublisher.getPublisher();
+}
+
+---
+
+Client subscribes:
+```
+subscription {
+  onNewVisit{
+    description
+    id
+  }
+}
+
+```
+
+Client gets notification when New visit happens:
+mutation {
+  addVisit(input: {
+    petId: 1
+    vetId: 3
+    description: "Vaccination 434"
+    date: "2023/03/22"
+  }) {
+    description
+  }
+}
