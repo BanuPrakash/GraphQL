@@ -28,6 +28,7 @@ public class RatingService {
         return ratingRepository.values().stream().filter( r -> r.bookId().equals(book.id())).toList();
     }
     
+    // DAO using IN parameter in SQL
     public Map<Book, List<Rating>> ratingsForBooks(List<Book> books) {
         return books.stream()
                 .collect(

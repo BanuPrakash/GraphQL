@@ -1049,3 +1049,101 @@ Client:
 }
 
 ```
+
+GraphQL DataLoaders
+1) Delay loading of field resolvers
+2) n + 1 problem
+3) Caching
+
+n + 1 problem
+
+pets {
+	name
+	owner {
+		firstName
+	}
+}
+
+
+select * from pets ==> [ 1, 2, 3, 4, 5] --> 1 Query
+select * from owner where pet_id = 1
+select * from owner where pet_id = 2
+select * from owner where pet_id = 3
+select * from owner where pet_id = 4
+select * from owner where pet_id = 5
+
+
+With DataLoader == we collect only owner ids of each pet ["o1", "o2","o3","o4", "o2"]
+
+select * from owners where id in ["o1", "o2","o3","o4"]
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+
+Publisher
+Flux --> emits o...n elements 
+Mono --> emits o.. 1 element
+
+```
+visits:[Visit]
+
+
+type Visit {
+	id:Int!
+	description:String
+	pet:Pet
+	
+	date:Date!
+	treatingVet:Vet
+}
+
+pet field resolver
+treatingVet field resolver
+
+@QueryMapping
+	public List<Visit> visits(@Argument Optional<Integer> petId) {
+		....
+	}
+
+@SchemaMapping(typeName = "Visit")
+	public CompletableFuture<Vet> treatingVet(Visit visit, DataLoader<Integer, Vet> dataLoader) {
+		if (visit.getVet() == null) {
+			return null;
+		}
+
+		log.info("Delegating loading of Vet with id {} from REST", visit.getVet().getId());
+		return dataLoader.load(visit.getVet().getId());
+	}
+
+Check console:
+{
+  visits {
+    description
+    date
+    treatingVet {
+       firstName
+      lastName
+    }
+  }
+}
+
+```
+
+Spring Boot 3.0 introduced @BatchMapping for DataLoader implementation
+
+```
+{
+  books {
+    name
+    author
+    ratings {
+      rating
+      comment
+    }
+  }
+}
+```
+
+

@@ -92,6 +92,7 @@ public class VisitController {
 	}
 
 	public Flux<Vet> vetsWithIds(Collection<Integer> ids) {
+		// return vetRepository.getMeVetsFor(ids); // use IN operator
 		return Flux.fromStream(ids.stream()).flatMap(this::vetById);
 	}
 

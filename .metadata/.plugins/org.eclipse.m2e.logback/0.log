@@ -1316,3 +1316,9 @@ org.eclipse.core.runtime.CoreException: Launch configuration SpringdemoApplicati
 	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:213)
 	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryRefreshJob.run(ProjectRegistryRefreshJob.java:106)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2023-05-16 10:47:04,100 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src/main/resources to target/classes
+2023-05-16 10:47:04,106 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 7 resources from src/main/resources to target/classes
+2023-05-16 10:47:04,108 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/banuprakash/Desktop/Java Workspaces/ADOBE/MAY23/GraphQL-May23/GraphQL/VeterinaryClinic/src/test/resources
+2023-05-16 10:59:29,671 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src/main/resources to target/classes
+2023-05-16 10:59:29,674 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 7 resources from src/main/resources to target/classes
+2023-05-16 10:59:29,676 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/banuprakash/Desktop/Java Workspaces/ADOBE/MAY23/GraphQL-May23/GraphQL/VeterinaryClinic/src/test/resources
