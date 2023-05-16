@@ -982,8 +982,70 @@ Pending:
 
 =================
 
+Day 3 Recap:
+1) Custom Scalar type
+--> graphql-extended-scalars --> dependencies --> Double, Long, DataTime, ...
 
-Day 4
+*.graphqls
+
+Scalar DateTime
+
+--> Corecing interface --> serialize, parseValue and parseLiteral
+register with RuntimeWiringConfigurer just like DataFetchers
+
+2) Union and interfaces , fragments __typename, ...on 
+3) variables
+4) Directives to be used with  FIELD_DEFNITION, OBJECT, ArGUMENT
+register with RuntimeWiringConfigurer
+5) Pagination
+5.1) based on RELAY specification
+Connection --> EDGE and PageINFO
+EDGE --> NODE and CURSOR
+
+get first n records from cursor [ after or before ]
+
+5.2) Offset
 
 
+Day 4)
 
+JPA Specification with GraphQL
+
+JP-QL and SQL for dynamic queries will be difficult to write for requirements like E-commerce Search
+
+Criteria API --> Object way to query the data
+
+JPASpecification 
+JpaSpecificationExecutor<T> and Specification
+
+OwnerRepository, OwnerSpecication and "filter package"
+
+```
+ owners(page: Int, size: Int, filter: OwnerSpecification): OwnerSearchResult!
+@QueryMapping
+	public OwnerSearchResult owners(@Argument Optional<Integer> page, @Argument Optional<Integer> size,
+			@Argument("filter") Optional<OwnerSpecification> filter) {
+		int pageNo = page.orElse(0);
+		int sizeNo = Math.min(size.orElse(20), 25);
+
+		final PageRequest pageRequest = PageRequest.of(pageNo, sizeNo);
+		return new OwnerSearchResult(ownerRepository.findAll(filter.orElse(null), pageRequest));
+	}
+```
+
+Client:
+```
+{
+  owners(page:0, size:2,filter:{
+    city: "Madison"
+  }) {
+    owners {
+      firstName
+      lastName
+      city
+      address
+    }
+  }
+}
+
+```
