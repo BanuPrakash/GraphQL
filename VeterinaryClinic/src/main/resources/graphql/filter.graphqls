@@ -1,0 +1,52 @@
+
+# filter and offset based pagination
+ extend type Query {
+  owners(page: Int, size: Int, filter: OwnerSpecification): OwnerSearchResult!
+    books: [Book]
+}
+
+
+type OwnerPageInfo {
+	pageNumber: Int!
+    totalCount: Int!
+    totalPages: Int!
+    hasNext: Boolean!
+    hasPrev: Boolean!
+    nextPage: Int
+    prevPage: Int
+	
+}
+
+
+type OwnerSearchResult {
+    pageInfo: OwnerPageInfo!
+    owners: [Owner!]!
+}
+
+# The input for owners query by a filter
+input OwnerSpecification {
+    firstName: String
+    lastName: String
+    address: String
+    city: String
+    telephone: String
+}
+
+
+#########
+
+
+type Book {
+    id : ID
+    name : String
+    author: String
+    price: Float
+    ratings: [Rating]
+}
+
+type Rating {
+    id: ID
+    rating: Int
+    comment: String
+    user: String
+}

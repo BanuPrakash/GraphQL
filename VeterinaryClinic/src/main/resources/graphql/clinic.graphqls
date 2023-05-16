@@ -1,8 +1,5 @@
-scalar Date
 
-directive @uppercase on FIELD_DEFINITION
-
-type Query {
+extend type Query {
 	pets:[Pet]
 	pet(id:Int): Pet 
 	petTypes:[PetType]
@@ -17,6 +14,8 @@ type Query {
     
     #pagination
     petPage(first:Int!, after:String) :PetConnection
+    
+    visits:[Visit]
 }
 
 type PetConnection {

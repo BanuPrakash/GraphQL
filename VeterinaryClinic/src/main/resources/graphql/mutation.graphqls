@@ -6,6 +6,11 @@ input VisitInput {
 	date:Date
 }
 
-type Mutation {
+extend type Mutation {
 	addVisit(input:VisitInput!): Visit!
+}
+
+
+type Subscription {
+    onNewVisit: Visit
 }

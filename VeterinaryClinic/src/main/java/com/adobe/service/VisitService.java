@@ -2,6 +2,8 @@ package com.adobe.service;
 
 import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import com.adobe.dao.PetRepository;
@@ -13,11 +15,17 @@ import com.adobe.entity.Visit;
 
 import jakarta.transaction.Transactional;
 
+
+
 @Service
 public class VisitService {
 	private final PetRepository petRepository;
 	private final VetRepository vetRepository;
 	private final VisitRepository visitRepository;
+	
+	@Autowired
+	ApplicationEventPublisher applicationEventPublisher;
+
 	
 	public VisitService(PetRepository petRepository, VetRepository vetRepository, VisitRepository visitRepository) {
 		this.petRepository = petRepository;
@@ -35,6 +43,8 @@ public class VisitService {
 			visit.setPet(pet);
 			visit.setVet(vet);
 			visitRepository.save(visit);
+			applicationEventPublisher.publishEvent(new VisitCreatedEvent(visit.getId()));
+
 			return visit;
 	}
 }

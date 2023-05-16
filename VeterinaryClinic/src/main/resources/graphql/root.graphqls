@@ -1,0 +1,4 @@
+scalar Date
+directive @uppercase on FIELD_DEFINITION
+type Query
+type Mutation
