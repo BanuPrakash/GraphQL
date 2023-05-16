@@ -7,13 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.graphql.client.HttpGraphQlClient;
 import org.springframework.http.HttpHeaders;
 
 import com.adobe.entity.Pet;
 import com.adobe.security.JwtTokenService;
 
-//@Configuration
+@Configuration
 public class PetClient {
 
 	@Autowired

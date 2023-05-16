@@ -1196,3 +1196,65 @@ mutation {
     description
   }
 }
+
+===========
+
+Security --> Graphql --> Prefer Token based authrization for GraphQL --> JWT
+
+Spring Security
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+====
+
+```
+@Autowired
+DataSource ds;
+
+@Autowired
+public void configureJdbcAuth(AuthenticationManagerBuilder auth) {
+	auth.jdbcAuthentication().dataSource(dataSource); // appliation.properties --> dirver, url, username,
+}
+
+create table users(
+	username varchar_ignorecase(50) not null primary key,
+	password varchar_ignorecase(50) not null,
+	enabled boolean not null
+);
+
+create table authorities (
+	username varchar_ignorecase(50) not null,
+	authority varchar_ignorecase(50) not null,
+	constraint fk_authorities_users foreign key(username) references users(username)
+);
+create unique index ix_auth_username on authorities (username,authority);
+```
+
+GraphQL, RESTful should be stateless --> No SessionTracking
+
+Server authentication and sends Token to client 
+Token contains claims --> subject {who you are?}, "issuer", "iat", "exp", authorites/roles
+
+every request from client send token
+Tokens can be Opaque Tokens / JWT
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-authorization-server</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+JWT
+* Symmetric key --> same key is used for both encryption and decryption
+ "topsecret12357-dotask" 
+
+* Asymmetric key --> Different keys for encryption (private key) and decryption (public key)
+
+use openssl to generate private key and public key
+

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.adobe.dao.PetRepository;
@@ -33,6 +34,7 @@ public class VisitService {
 		this.visitRepository = visitRepository;
 	}
 	
+	@PreAuthorize("hasRole('MANAGER')")
 	@Transactional
 	public Visit addVisit(int petId, int vetId, String description, LocalDate date ) {
 			Pet pet = petRepository.findById(petId).get();
